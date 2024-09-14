@@ -7,17 +7,11 @@ using UnityEngine;
 public class StateChange : MonoBehaviour
 {
     public SUPERCharacterAIO playerController;
-    public GameObject player;
-    public GameObject Laptop;
+
 
     public CinemachineVirtualCamera playerCamera;
     public CinemachineVirtualCamera laptopViewCamera;
 
-    private void Start()
-    {
-        playerCamera = player.GetComponentInChildren<CinemachineVirtualCamera>();
-        laptopViewCamera = Laptop.GetComponentInChildren<CinemachineVirtualCamera>();
-    }
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -35,13 +29,11 @@ public class StateChange : MonoBehaviour
             IInteractable i = h.collider.GetComponent<IInteractable>();
             if (i != null)
             {
-                int temp = 0;
-                temp = playerCamera.Priority;
-                playerCamera.Priority = laptopViewCamera.Priority;
-                laptopViewCamera.Priority = temp;
+                laptopViewCamera.Priority = 40;
                 playerController.enableMovementControl = false;
                 playerController.enableCameraControl = false;
                 playerController.crosshairImg.gameObject.SetActive(false);
+                
             }
         }
     }
