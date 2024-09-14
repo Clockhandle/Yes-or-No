@@ -12,19 +12,15 @@ public class LaptopController : MonoBehaviour, IInteractable
     public CinemachineVirtualCamera laptopViewCamera;
     public bool Interact()
     {
-<<<<<<< Updated upstream:Assets/LaptopController.cs
-        Debug.Log("Activate Computer");
-        playerController.interactRange = 0;
-=======
         StartCoroutine(TransitioningStates());
->>>>>>> Stashed changes:Assets/Scripts/LaptopController.cs
         return false;
     }
 
     IEnumerator TransitioningStates()
     {
         laptopViewCamera.Priority = 40;
-        yield return new WaitForSeconds(2);
+        playerController.crosshairImg.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.2f);
         Debug.Log("Activate Computer");
         playerController.enabled = false;
     }
